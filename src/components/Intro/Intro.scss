@@ -1,0 +1,33 @@
+.Intro {
+	background-color: #fafafa;
+	height: 340px;
+	padding: 40px;
+	text-align: center;
+
+	.roundedImage {
+		display: inline-block;
+		justify-content: space-between;
+		padding: 0 10px;
+		margin: 0 20px;
+		position: relative;
+		right: 150px;
+		top: -30px;
+		cursor: pointer;
+	}
+	.textDisplay {
+		display: inline-block;
+		justify-content: center;
+		height: 100%;
+		width: max-content;
+		text-align: start;
+
+		.heading {
+			display: inline-block;
+			justify-content: space-between;
+			margin-right: 10px;
+		}
+		button {
+			margin-left: 20px;
+		}
+	}
+}
