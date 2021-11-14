@@ -1,40 +1,63 @@
 import React, { useEffect, useState } from "react";
-import { api } from "./utils/api";
+import { PostIcon, SavedIcon } from "../Icons/Icon";
 import PostFeed from "./PostFeed";
-import SavedPosts from "./Saved";
+import { api } from "./utils/Services.utils";
 
 import "./Posts.scss";
 
 const Posts = () => {
 	const [userInfo, setUserInfo] = useState([]);
+	const [savedInfo, setSavedInfo] = useState([]);
 
 	const [tab, setTab] = useState("POSTS");
 
 	const [loading, setLoading] = useState(true);
+	const [hasError, setHasError] = useState(false);
 
 	useEffect(() => {
 		const fetchPosts = async () => {
-			const appd = await api();
-			setLoading(false);
-			setUserInfo(appd);
+			setLoading(true);
+			setHasError(false);
+			try {
+				const [link1, link2] = await api();
+				setUserInfo(link1);
+				setSavedInfo(link2);
+				setLoading(false);
+			} catch (error) {
+				console.log("error", error);
+				setHasError(true);
+			}
 		};
 		fetchPosts();
 	}, []);
-
 	return (
 		<>
 			<hr />
-			<br />
 
 			<div className="container">
-				<button onClick={() => setTab("POSTS")}> Posts</button>
-				<button onClick={() => setTab("SAVED")}> Saved</button>
-
+				<div className="profile-tab">
+					<div
+						style={{ fontWeight: tab === "POSTS" ? "500" : "" }}
+						onClick={() => setTab("POSTS")}
+					>
+						<PostIcon />
+						<span>Posts</span>
+					</div>
+					<div
+						style={{ fontWeight: tab === "SAVED" ? "500" : "" }}
+						onClick={() => setTab("SAVED")}
+					>
+						<SavedIcon />
+						<span>Saved</span>
+					</div>
+				</div>
+				<br />
+				{hasError && <p>Something went wrong.</p>}
 				{tab === "POSTS" && (
-					<PostFeed userInfo={userInfo} loading={loading} />
+					<PostFeed page={userInfo} loading={loading} />
 				)}
 				{tab === "SAVED" && (
-					<SavedPosts userInfo={userInfo} loading={loading} />
+					<PostFeed page={savedInfo} loading={loading} />
 				)}
 			</div>
 		</>

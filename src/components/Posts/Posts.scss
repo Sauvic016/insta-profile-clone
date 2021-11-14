@@ -41,6 +41,25 @@ hr {
 			}
 		}
 	}
+	.profile-tab {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 1.4rem 0;
+
+		div {
+			display: flex;
+			cursor: pointer;
+			margin-right: 3rem;
+		}
+		span {
+			padding-left: 0.3rem;
+		}
+		svg {
+			height: 24px;
+			width: 24px;
+		}
+	}
 }
 
 .loadSpinner {
