@@ -2,6 +2,7 @@ import React from "react";
 import ReactRoundedImage from "react-rounded-image";
 import pic from "../../assets/profile.png";
 import "./Intro.scss";
+import UserInfo from "./IntroInfos/UserInfo";
 
 const User = {
 	Name: "UserName_digit",
@@ -29,41 +30,7 @@ const Intro = () => {
 					hoverColor="#0fc2e2"
 				/>
 			</div>
-			<div className="textDisplay">
-				<div>
-					<h2 className="heading">{User.Name}</h2>
-					<span className="buttonsGroup">
-						<button className="btn profile-edit-btn">
-							Edit Profile
-						</button>
-						<button className="btn">
-							<i className="fas fa-cog" aria-hidden="true"></i>
-						</button>
-					</span>
-				</div>
-				<br />
-				<div className="postfollowersNums">
-					<span>
-						<b> {User.Posts}</b> posts
-					</span>
-					<span>
-						<b> {User.Followers}k</b> followers
-					</span>
-					<span>
-						<b> {User.Following}</b> following
-					</span>
-				</div>
-				<br />
-				<div>
-					{User.Description.map((el) => {
-						return (
-							<div key={el.id}>
-								<p>{el.value}</p>
-							</div>
-						);
-					})}
-				</div>
-			</div>
+			<UserInfo User={User} />
 		</div>
 	);
 };

@@ -8,9 +8,7 @@ import "./Posts.scss";
 const Posts = () => {
 	const [userInfo, setUserInfo] = useState([]);
 	const [savedInfo, setSavedInfo] = useState([]);
-
 	const [tab, setTab] = useState("POSTS");
-
 	const [loading, setLoading] = useState(true);
 	const [hasError, setHasError] = useState(false);
 
@@ -24,7 +22,7 @@ const Posts = () => {
 				setSavedInfo(link2);
 				setLoading(false);
 			} catch (error) {
-				console.log("error", error);
+				console.log("error:", error);
 				setHasError(true);
 			}
 		};
@@ -53,10 +51,9 @@ const Posts = () => {
 				</div>
 				<br />
 				{hasError && <p>Something went wrong.</p>}
-				{tab === "POSTS" && (
+				{tab === "POSTS" ? (
 					<PostFeed page={userInfo} loading={loading} />
-				)}
-				{tab === "SAVED" && (
+				) : (
 					<PostFeed page={savedInfo} loading={loading} />
 				)}
 			</div>

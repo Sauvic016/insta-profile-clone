@@ -1,5 +1,4 @@
 import React from "react";
-// import Loader from "react-loader-spinner";
 import PostImg from "./PostImg";
 import PostWrapper from "./PostWrapper";
 import "./Posts.scss";
@@ -16,7 +15,7 @@ const PostFeed = ({ page, loading }) => {
 						height={100}
 						width={100}
 						timeout={3000}
-						visible={loading} //3 secs
+						visible={loading}
 					/>
 				</div>
 			)}
@@ -33,32 +32,6 @@ const PostFeed = ({ page, loading }) => {
 					);
 				})}
 			</PostWrapper>
-			{/* {console.log(
-				userInfos.map((el) => {
-					return el.url;
-				})
-			)} */}
-			{/* <>
-				{loading && <h1>Loading...</h1>}
-				{page.length !== 0 ? (
-					<PostWrapper>
-						{page.map((el) => {
-							return (
-								<PostImg
-									key={el.id}
-									src={el.download_url}
-									alt="img"
-									className="postImage"
-								/>
-							);
-						})}
-					</PostWrapper>
-				) : (
-					<div>
-						Once you start making new posts, they'll appear here
-					</div>
-				)}
-			</> */}
 		</>
 	);
 };
