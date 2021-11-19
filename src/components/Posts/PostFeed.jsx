@@ -21,13 +21,20 @@ const PostFeed = ({ page, loading }) => {
 			)}
 			<PostWrapper>
 				{page.map((el) => {
+					// console.log(el.urls.regular);
 					return (
 						<PostImg
 							key={el.id}
 							src={el.urls.thumb}
 							alt="img"
-							className="postImage"
 							loading={loading}
+							desc={
+								el.user.bio
+									? el.user.bio
+									: `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint at fugit temporibus ducimus similique sapiente! Corrupti quam asperiores libero. Neque!`
+							}
+							lSrc={el.urls.regular}
+							className="postImage"
 						/>
 					);
 				})}

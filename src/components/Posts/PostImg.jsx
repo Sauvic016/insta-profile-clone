@@ -1,7 +1,12 @@
-import React from "react";
-import Loader from "react-loader-spinner";
+import React, { useState } from "react";
 
-const PostImg = ({ src, alt, className, loading }) => {
+import Loader from "react-loader-spinner";
+import Modal from "../../components/Modal/Modal";
+
+import "./Posts.scss";
+
+const PostImg = ({ src, alt, loading, desc, lSrc, className }) => {
+	const [modalOpen, setModalOpen] = useState(false);
 	return (
 		<>
 			{loading && (
@@ -12,11 +17,21 @@ const PostImg = ({ src, alt, className, loading }) => {
 						height={100}
 						width={100}
 						timeout={3000}
-						visible={loading} //3 secs
+						visible={loading}
 					/>
 				</div>
 			)}
-			<img src={src} alt={alt} className={className} />
+			<img
+				src={src}
+				alt={alt}
+				className={className}
+				onClick={() => {
+					setModalOpen(true);
+				}}
+			/>
+			{modalOpen && (
+				<Modal setOpenModal={setModalOpen} lsrc={lSrc} desc={desc} />
+			)}
 		</>
 	);
 };

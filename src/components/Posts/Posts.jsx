@@ -2,10 +2,28 @@ import React, { useEffect, useState } from "react";
 import { PostIcon, SavedIcon } from "../Icons/Icon";
 import PostFeed from "./PostFeed";
 import { api } from "./utils/Services.utils";
+import Tab from "./Tabs";
 
 import "./Posts.scss";
 
 const Posts = () => {
+	const tabList = [
+		{
+			__id: 1,
+			tab: "POSTS",
+			onClick: () => setTab("POSTS"),
+			icon: <PostIcon />,
+			label: "Post",
+		},
+		{
+			__id: 2,
+			tab: "SAVED",
+			onClick: () => setTab("SAVED"),
+			icon: <SavedIcon />,
+			label: "Saved",
+		},
+	];
+
 	const [userInfo, setUserInfo] = useState([]);
 	const [savedInfo, setSavedInfo] = useState([]);
 	const [tab, setTab] = useState("POSTS");
@@ -34,20 +52,30 @@ const Posts = () => {
 
 			<div className="container">
 				<div className="profile-tab">
-					<div
-						style={{ fontWeight: tab === "POSTS" ? "500" : "" }}
+					{tabList.map((el) => {
+						return (
+							<Tab
+								key={el.__id}
+								active={el.tab === tab}
+								onClick={el.onClick}
+								icon={el.icon}
+								label={el.label}
+							/>
+						);
+					})}
+					{/* <Tab
+						active={tab === "POSTS"}
 						onClick={() => setTab("POSTS")}
-					>
-						<PostIcon />
-						<span>Posts</span>
-					</div>
-					<div
-						style={{ fontWeight: tab === "SAVED" ? "500" : "" }}
+						icon={<PostIcon />}
+						label={"Post"}
+					/>
+
+					<Tab
+						active={tab === "SAVED"}
 						onClick={() => setTab("SAVED")}
-					>
-						<SavedIcon />
-						<span>Saved</span>
-					</div>
+						icon={<SavedIcon />}
+						label={"Saved"}
+					/> */}
 				</div>
 				<br />
 				{hasError && <p>Something went wrong.</p>}
