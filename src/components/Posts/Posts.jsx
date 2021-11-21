@@ -63,19 +63,6 @@ const Posts = () => {
 							/>
 						);
 					})}
-					{/* <Tab
-						active={tab === "POSTS"}
-						onClick={() => setTab("POSTS")}
-						icon={<PostIcon />}
-						label={"Post"}
-					/>
-
-					<Tab
-						active={tab === "SAVED"}
-						onClick={() => setTab("SAVED")}
-						icon={<SavedIcon />}
-						label={"Saved"}
-					/> */}
 				</div>
 				<br />
 				{hasError && <p>Something went wrong.</p>}
