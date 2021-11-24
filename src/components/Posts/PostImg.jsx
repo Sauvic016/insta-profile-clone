@@ -30,7 +30,12 @@ const PostImg = ({ src, alt, loading, desc, lSrc, className }) => {
 				}}
 			/>
 			{modalOpen && (
-				<Modal setOpenModal={setModalOpen} lsrc={lSrc} desc={desc} />
+				<Modal
+					setOpenModal={setModalOpen}
+					lsrc={lSrc}
+					desc={desc}
+					isrc={src}
+				/>
 			)}
 		</>
 	);

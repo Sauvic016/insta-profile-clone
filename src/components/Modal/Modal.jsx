@@ -1,26 +1,34 @@
-import React from "react";
-import messenger from "../../assets/messenger.PNG";
-import bookmark from "../../assets/bookmark.svg";
-import explore from "../../assets/explore.PNG";
-import like from "../../assets/like.PNG";
-
+import React, { useState } from "react";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
+import ExploreIcon from "@mui/icons-material/Explore";
+import TelegramIcon from "@mui/icons-material/Telegram";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import "./Modal.scss";
-import ModalIcon from "./ModalIcon";
 import ModalIconWrapper from "./ModalIconWrapper";
 import ModalWrapper from "./ModalWrapper";
 
-const Modal = ({ setOpenModal, lsrc, desc }) => {
-	const Iconimg = [
-		{ _id: 1, value: messenger, path: "/messages" },
-		{ _id: 2, value: explore, path: "/explore" },
-		{ _id: 3, value: like, path: "/likes" },
-		{
-			_id: 4,
-			value: bookmark,
-			path: "/bookmarks",
-			className: "lefticon",
-		},
-	];
+const Modal = ({ setOpenModal, lsrc, desc, isrc }) => {
+	const pink = "	#FF69B4	";
+	const black = "#000";
+	const blue = "#22CDF0";
+	const [likeColor, setLikeColor] = useState(black);
+	const [savedColor, setSavedColor] = useState(black);
+	const [likeClick, setLikeClick] = useState("");
+
+	const detailOfImage = [isrc, lsrc, desc];
+	const newJsonDetailImg = JSON.stringify(detailOfImage);
+
+	const onSaveClick = (file) => {
+		const filetoJson = JSON.stringify(file);
+		localStorage.setItem(filetoJson, newJsonDetailImg);
+		// console.log(filetoJson);
+		setSavedColor((newColor) => (newColor === black ? blue : black));
+	};
+
+	const onLikeClick = () => {
+		setLikeClick((s) => (s === 1 ? "" : 1));
+		setLikeColor((newColor) => (newColor === black ? pink : black));
+	};
 
 	return (
 		<ModalWrapper>
@@ -34,7 +42,19 @@ const Modal = ({ setOpenModal, lsrc, desc }) => {
 
 					<hr />
 					<ModalIconWrapper>
-						<ModalIcon Iconimg={Iconimg} />
+						<TelegramIcon className="icon" />
+						<ExploreIcon className="icon" />
+						<FavoriteIcon
+							className="icon"
+							onClick={onLikeClick}
+							sx={{ color: likeColor }}
+						/>
+						<span className="iconx">{likeClick}</span>
+						<BookmarkIcon
+							onClick={() => onSaveClick(isrc)}
+							className="lefticon"
+							sx={{ color: savedColor }}
+						/>
 					</ModalIconWrapper>
 				</div>
 			</div>

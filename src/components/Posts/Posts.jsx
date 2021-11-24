@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { PostIcon, SavedIcon } from "../Icons/Icon";
 import PostFeed from "./PostFeed";
@@ -5,6 +6,7 @@ import { api } from "./utils/Services.utils";
 import Tab from "./Tabs";
 
 import "./Posts.scss";
+import SavedFeed from "./SavedFeed";
 
 const Posts = () => {
 	const tabList = [
@@ -25,7 +27,6 @@ const Posts = () => {
 	];
 
 	const [userInfo, setUserInfo] = useState([]);
-	const [savedInfo, setSavedInfo] = useState([]);
 	const [tab, setTab] = useState("POSTS");
 	const [loading, setLoading] = useState(true);
 	const [hasError, setHasError] = useState(false);
@@ -37,7 +38,7 @@ const Posts = () => {
 			try {
 				const [link1, link2] = await api();
 				setUserInfo(link1);
-				setSavedInfo(link2);
+
 				setLoading(false);
 			} catch (error) {
 				console.log("error:", error);
@@ -69,7 +70,7 @@ const Posts = () => {
 				{tab === "POSTS" ? (
 					<PostFeed page={userInfo} loading={loading} />
 				) : (
-					<PostFeed page={savedInfo} loading={loading} />
+					<SavedFeed />
 				)}
 			</div>
 		</>
