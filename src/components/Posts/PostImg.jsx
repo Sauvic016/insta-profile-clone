@@ -28,6 +28,7 @@ const PostImg = ({ src, alt, loading, desc, lSrc, className }) => {
 				onClick={() => {
 					setModalOpen(true);
 				}}
+				// style={{ width: "12.43rem", height: "15.43rem" }}
 			/>
 			{modalOpen && (
 				<Modal

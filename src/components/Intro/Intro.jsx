@@ -1,7 +1,7 @@
 import React from "react";
-import ReactRoundedImage from "react-rounded-image";
+// import ReactRoundedImage from "react-rounded-image";
 import pic from "../../assets/profile.png";
-import "./Intro.scss";
+import "./Intro.css";
 import UserInfo from "./IntroInfos/UserInfo";
 
 const User = {
@@ -20,17 +20,20 @@ const User = {
 const Intro = () => {
 	return (
 		<div className="Intro">
-			<div className="roundedImage">
-				<ReactRoundedImage
-					image={pic}
-					roundedColor="#200a9c"
-					imageWidth="160"
-					imageHeight="160"
-					roundedSize="13"
-					hoverColor="#0fc2e2"
-				/>
+			<div className="profile">
+				<div className="profile-image">
+					{/* <ReactRoundedImage
+						image={pic}
+						roundedColor="#200a9c"
+						imageWidth="160"
+						imageHeight="160"
+						roundedSize="13"
+						hoverColor="#0fc2e2"
+					/> */}
+					<img src={pic} alt="profilepic" />
+				</div>
+				<UserInfo User={User} />
 			</div>
-			<UserInfo User={User} />
 		</div>
 	);
 };

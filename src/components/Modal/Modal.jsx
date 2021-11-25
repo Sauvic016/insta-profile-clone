@@ -1,33 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import ExploreIcon from "@mui/icons-material/Explore";
 import TelegramIcon from "@mui/icons-material/Telegram";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+
 import "./Modal.scss";
 import ModalIconWrapper from "./ModalIconWrapper";
 import ModalWrapper from "./ModalWrapper";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import Favorite from "@material-ui/icons/Favorite";
+import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 
 const Modal = ({ setOpenModal, lsrc, desc, isrc }) => {
-	const pink = "	#FF69B4	";
-	const black = "#000";
-	const blue = "#22CDF0";
-	const [likeColor, setLikeColor] = useState(black);
-	const [savedColor, setSavedColor] = useState(black);
-	const [likeClick, setLikeClick] = useState("");
+	const detailOfImage = { isrc: isrc, lsrc: lsrc, desc: desc };
+	let saved = [];
+	const details = JSON.parse(localStorage.getItem("filetoJson"));
+	if (details) {
+		saved = [...details, detailOfImage];
+	} else {
+		saved.push(detailOfImage);
+	}
+	const newJsonDetailImg = JSON.stringify(saved);
 
-	const detailOfImage = [isrc, lsrc, desc];
-	const newJsonDetailImg = JSON.stringify(detailOfImage);
-
-	const onSaveClick = (file) => {
-		const filetoJson = JSON.stringify(file);
-		localStorage.setItem(filetoJson, newJsonDetailImg);
-		// console.log(filetoJson);
-		setSavedColor((newColor) => (newColor === black ? blue : black));
-	};
-
-	const onLikeClick = () => {
-		setLikeClick((s) => (s === 1 ? "" : 1));
-		setLikeColor((newColor) => (newColor === black ? pink : black));
+	const onSaveClick = () => {
+		// const filetoJson = JSON.stringify(file);
+		localStorage.setItem("filetoJson", newJsonDetailImg);
 	};
 
 	return (
@@ -44,16 +42,32 @@ const Modal = ({ setOpenModal, lsrc, desc, isrc }) => {
 					<ModalIconWrapper>
 						<TelegramIcon className="icon" />
 						<ExploreIcon className="icon" />
-						<FavoriteIcon
+						{/* <FavoriteIcon
 							className="icon"
 							onClick={onLikeClick}
 							sx={{ color: likeColor }}
+						/> */}
+						<FormControlLabel
+							className="iconx"
+							control={
+								<Checkbox
+									icon={<FavoriteBorder />}
+									checkedIcon={<Favorite />}
+									name="checkedH"
+								/>
+							}
 						/>
-						<span className="iconx">{likeClick}</span>
-						<BookmarkIcon
-							onClick={() => onSaveClick(isrc)}
-							className="lefticon"
-							sx={{ color: savedColor }}
+
+						<FormControlLabel
+							className="iconx rightsaved"
+							control={
+								<Checkbox
+									icon={<BookmarkBorderIcon />}
+									checkedIcon={<BookmarkIcon />}
+									color={"default"}
+									onClick={() => onSaveClick()}
+								/>
+							}
 						/>
 					</ModalIconWrapper>
 				</div>

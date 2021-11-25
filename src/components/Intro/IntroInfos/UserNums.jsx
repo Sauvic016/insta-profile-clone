@@ -2,17 +2,19 @@ import React from "react";
 
 const UserNums = ({ User, className }) => {
 	return (
-		<div className={className}>
-			<span>
-				<b> {User.Posts}</b> posts
-			</span>
-			<span>
-				<b> {User.Followers}k</b> followers
-			</span>
-			<span>
-				<b> {User.Following}</b> following
-			</span>
-		</div>
+		<ul className={className}>
+			<li>
+				<span className="profile-stat-count"> {User.Posts}</span> posts
+			</li>
+			<li>
+				<span className="profile-stat-count"> {User.Followers}k</span>
+				followers
+			</li>
+			<li>
+				<span className="profile-stat-count"> {User.Following}</span>
+				following
+			</li>
+		</ul>
 	);
 };
 

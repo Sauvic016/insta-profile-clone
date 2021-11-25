@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/Instagram_logo.svg";
-import home from "../../assets/home.PNG";
-import messenger from "../../assets/messenger.PNG";
-import add from "../../assets/add.PNG";
-import explore from "../../assets/explore.PNG";
-import like from "../../assets/like.PNG";
+
+import HomeIcon from "@mui/icons-material/Home";
+import InboxIcon from "@mui/icons-material/Inbox";
+import AddBoxIcon from "@mui/icons-material/AddBox";
+import ExploreIcon from "@mui/icons-material/Explore";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import pic from "../../assets/profile.png";
 import "./Nav.scss";
 import ProfileDropdown from "./Profile/ProfileDropdown";
@@ -27,25 +28,44 @@ const Nav = () => {
 					<div className="nav-items">
 						<Link to="/home">
 							{" "}
-							<img src={home} className="icon" alt="homeimg" />
+							{/* <img src={home} className="icon" alt="homeimg" /> */}
+							<HomeIcon sx={{ color: "#000" }} className="icon" />
 						</Link>
 						<Link to="/messages">
-							<img
+							{/* <img
 								src={messenger}
 								className="icon"
 								alt="messengerimg"
+							/> */}
+							<InboxIcon
+								sx={{ color: "#000" }}
+								className="icon"
+								fontSize="large"
 							/>
 						</Link>
-						<img src={add} className="icon" alt="addimg" />
+						<AddBoxIcon
+							sx={{ color: "#000" }}
+							className="icon"
+							fontSize="large"
+						/>
 						<Link to="/explore">
-							<img
+							{/* <img
 								src={explore}
 								className="icon"
 								alt="exploreimg"
+							/> */}
+							<ExploreIcon
+								sx={{ color: "#000" }}
+								className="icon"
+								fontSize="large"
 							/>
 						</Link>
 						<Link to="/liked">
-							<img src={like} className="icon" alt="likeimg" />
+							<FavoriteIcon
+								sx={{ color: "#000" }}
+								className="icon"
+								fontSize="large"
+							/>
 						</Link>
 						<span>
 							<img

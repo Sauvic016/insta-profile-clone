@@ -1,12 +1,12 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { PostIcon, SavedIcon } from "../Icons/Icon";
 import PostFeed from "./PostFeed";
-import { api } from "./utils/Services.utils";
 import Tab from "./Tabs";
-
 import "./Posts.scss";
 import SavedFeed from "./SavedFeed";
+
+import { api } from "./utils/ServiceUtilx";
+// import Loader from "react-loader-spinner";
 
 const Posts = () => {
 	const tabList = [
@@ -25,32 +25,55 @@ const Posts = () => {
 			label: "Saved",
 		},
 	];
-
-	const [userInfo, setUserInfo] = useState([]);
+	const [photos, setPhotos] = useState([]);
+	// const [page, setPage] = useState(0);
 	const [tab, setTab] = useState("POSTS");
 	const [loading, setLoading] = useState(true);
-	const [hasError, setHasError] = useState(false);
+	// const [hasError, setHasError] = useState(false);
 
 	useEffect(() => {
 		const fetchPosts = async () => {
 			setLoading(true);
-			setHasError(false);
+			// setHasError(false);
 			try {
-				const [link1, link2] = await api();
-				setUserInfo(link1);
-
+				// console.log(data);
+				// const data = await api(page);
+				const data = await api();
+				// setPhotos((oldPhotos) => {
+				// 	return [...oldPhotos, ...data];
+				// });
+				setPhotos(data);
 				setLoading(false);
+				// console.log(data);
 			} catch (error) {
 				console.log("error:", error);
-				setHasError(true);
+				// setHasError(true);
 			}
 		};
 		fetchPosts();
 	}, []);
+	// }, [page]);
+	// useEffect(() => {
+	// 	const event = window.addEventListener("scroll", () => {
+	// 		if (
+	// 			!loading &&
+	// 			window.innerHeight + window.scrollY >=
+	// 				document.body.scrollHeight - 2
+	// 		) {
+	// 			setPage((oldPage) => {
+	// 				return oldPage + 3;
+	// 			});
+	// 		} else {
+	// 			<Loader />;
+	// 		}
+	// 	});
+
+	// 	return () => window.removeEventListener("scroll", event);
+	// }, [loading]);
+
 	return (
 		<>
 			<hr />
-
 			<div className="container">
 				<div className="profile-tab">
 					{tabList.map((el) => {
@@ -66,9 +89,9 @@ const Posts = () => {
 					})}
 				</div>
 				<br />
-				{hasError && <p>Something went wrong.</p>}
+				{/* {hasError && <p>Something went wrong.</p>} */}
 				{tab === "POSTS" ? (
-					<PostFeed page={userInfo} loading={loading} />
+					<PostFeed page={photos} loading={loading} />
 				) : (
 					<SavedFeed />
 				)}
@@ -76,5 +99,4 @@ const Posts = () => {
 		</>
 	);
 };
-
 export default Posts;

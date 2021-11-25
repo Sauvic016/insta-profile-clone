@@ -5,21 +5,20 @@ const UserInfo = ({ User }) => {
 	return (
 		<>
 			<div className="textDisplay">
-				<div>
-					<h2 className="heading">{User.Name}</h2>
-					<span className="buttonsGroup">
-						<button className="btn profile-edit-btn">
-							Edit Profile
-						</button>
-						<button className="btn">
-							<i className="fas fa-cog" aria-hidden="true"></i>
-						</button>
-					</span>
+				<div className="profile-user-settings">
+					<h2 className="profile-user-name">{User.Name}</h2>
+
+					<button className="btn profile-edit-btn">
+						Edit Profile
+					</button>
+					<button className=" btn profile-settings-btn">
+						<i className="fas fa-cog" aria-hidden="true"></i>
+					</button>
 				</div>
 				<br />
-				<UserNums User={User} className="postfollowersNums" />
+				<UserNums User={User} className="profile-stats" />
 				<br />
-				<div>
+				<div className="profile-bio ">
 					{User.Description.map((el) => {
 						return (
 							<div key={el.id}>

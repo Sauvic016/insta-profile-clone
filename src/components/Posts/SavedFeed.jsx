@@ -1,5 +1,5 @@
-// TODO: Use material ui icon and like feature
 import React, { useEffect, useState } from "react";
+
 import PostImg from "./PostImg";
 import PostWrapper from "./PostWrapper";
 
@@ -7,14 +7,8 @@ const SavedFeed = () => {
 	const [url, setUrl] = useState([]);
 
 	const func = () => {
-		let values = [],
-			keys = Object.keys(localStorage),
-			i = keys.length;
-
-		while (i--) {
-			values.push(JSON.parse(localStorage.getItem(keys[i])));
-		}
-
+		const saved = localStorage.getItem("filetoJson");
+		const values = JSON.parse(saved);
 		return values;
 	};
 	useEffect(() => {
@@ -23,18 +17,21 @@ const SavedFeed = () => {
 
 	return (
 		<>
-			{url.length > 0 ? (
+			{url ? (
 				<PostWrapper>
 					{url.map((el) => {
 						return (
-							<PostImg
-								key={el}
-								src={el[0]}
-								alt="img"
-								desc={el[2]}
-								lSrc={el[1]}
-								className="postImage"
-							/>
+							<>
+								{/* {console.log(el.isrc)} */}
+								<PostImg
+									key={el.isrc}
+									src={el.isrc}
+									alt="img"
+									desc={el.desc}
+									lSrc={el.lsrc}
+									className="postImage"
+								/>
+							</>
 						);
 					})}
 				</PostWrapper>
