@@ -25,7 +25,7 @@ const PostFeed = ({ page, loading }) => {
 					return (
 						<PostImg
 							key={el.id}
-							src={el.urls.regular}
+							src={el.urls.thumb}
 							alt="img"
 							loading={loading}
 							desc={

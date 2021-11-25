@@ -21,6 +21,14 @@ const PostImg = ({ src, alt, loading, desc, lSrc, className }) => {
 					/>
 				</div>
 			)}
+			{modalOpen && (
+				<Modal
+					setOpenModal={setModalOpen}
+					lsrc={lSrc}
+					desc={desc}
+					isrc={src}
+				/>
+			)}
 			<img
 				src={src}
 				alt={alt}
@@ -30,14 +38,6 @@ const PostImg = ({ src, alt, loading, desc, lSrc, className }) => {
 				}}
 				// style={{ width: "12.43rem", height: "15.43rem" }}
 			/>
-			{modalOpen && (
-				<Modal
-					setOpenModal={setModalOpen}
-					lsrc={lSrc}
-					desc={desc}
-					isrc={src}
-				/>
-			)}
 		</>
 	);
 };

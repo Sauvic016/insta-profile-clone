@@ -1,8 +1,8 @@
 import React from "react";
 
-const ModalWrapper = ({ children }) => {
+const ModalWrapper = ({ children, setModal }) => {
 	return (
-		<div className="modalBackground">
+		<div className="modalBackground" onClick={() => setModal(false)}>
 			<div className="modalContainer">{children}</div>
 		</div>
 	);

@@ -4,9 +4,7 @@ import "./Modal.scss";
 const ModalIconWrapper = ({ children }) => {
 	return (
 		<>
-			<div className="Modalicon-wrapper">
-				<div className="Modaliconitems">{children}</div>
-			</div>
+			<div className="Modaliconitems">{children}</div>
 		</>
 	);
 };

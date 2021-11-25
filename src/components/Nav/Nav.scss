@@ -57,3 +57,39 @@
 		}
 	}
 }
+@media screen and (max-width: 63.375rem) {
+	.navbar {
+		display: flex;
+		.nav-wrapper {
+			.search-box {
+				display: none;
+			}
+		}
+	}
+}
+@media screen and (max-width: 28.25rem) {
+	.navbar {
+		display: flex;
+		.nav-wrapper {
+			justify-content: center;
+			width: 100%;
+			height: 100%;
+
+			.brand-img {
+				width: 90px;
+			}
+			.search-box {
+				display: none;
+			}
+			.nav-items {
+				height: 22px;
+				position: relative;
+			}
+			.icon {
+				height: 100%;
+				cursor: pointer;
+				display: inline-block;
+			}
+		}
+	}
+}
