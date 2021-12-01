@@ -1,9 +1,9 @@
-import React from "react";
-// import ReactRoundedImage from "react-rounded-image";
+import React, { useState } from "react";
+// import { useHistory } from "react-router-dom";
 import pic from "../../assets/profile.png";
 import "./Intro.css";
 import UserInfo from "./IntroInfos/UserInfo";
-
+import Stories from "../StoriesFeed/StoryX";
 const User = {
 	Name: "UserName_digit",
 	Posts: 163,
@@ -18,22 +18,29 @@ const User = {
 };
 
 const Intro = () => {
+	const [storiesOpen, setStoriesOpen] = useState(false);
+
+	// const history = useHistory();
+	// const redirectTostories = () => {
+	// 	history.push("/stories");
+	// };
 	return (
 		<div className="Intro">
 			<div className="profile">
 				<div className="profile-image">
-					{/* <ReactRoundedImage
-						image={pic}
-						roundedColor="#200a9c"
-						imageWidth="160"
-						imageHeight="160"
-						roundedSize="13"
-						hoverColor="#0fc2e2"
-					/> */}
-					<img src={pic} alt="profilepic" />
+					<div className="profileBackground">
+						<img
+							src={pic}
+							alt="profilepic"
+							onClick={() => {
+								setStoriesOpen(true);
+							}}
+						/>
+					</div>
 				</div>
 				<UserInfo User={User} />
 			</div>
+			{storiesOpen && <Stories setStories={setStoriesOpen} />}
 		</div>
 	);
 };

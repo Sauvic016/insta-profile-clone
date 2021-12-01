@@ -7,11 +7,11 @@ const UserNums = ({ User, className }) => {
 				<span className="profile-stat-count"> {User.Posts}</span> posts
 			</li>
 			<li>
-				<span className="profile-stat-count"> {User.Followers}k</span>
+				<span className="profile-stat-count"> {User.Followers}k </span>
 				followers
 			</li>
 			<li>
-				<span className="profile-stat-count"> {User.Following}</span>
+				<span className="profile-stat-count"> {User.Following} </span>
 				following
 			</li>
 		</ul>

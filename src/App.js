@@ -1,20 +1,22 @@
-// import "./App.css";
-import { BrowserRouter as Router } from "react-router-dom";
-import Nav from "./components/Nav/Nav.jsx";
-import Intro from "./components/Intro/Intro.jsx";
-import Posts from "./components/Posts/PostX.jsx";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// import Stories from "./components/StoriesFeed/Story.jsx";
+import Profile from "./pages/Profile.js";
 
 const App = () => {
 	return (
-		<Router>
-			<div className="App">
-				<Nav />
-
-				<Intro />
-
-				<Posts />
-			</div>
-		</Router>
+		<div className="App">
+			<Router>
+				<Switch>
+					<Route path="/" exact>
+						<Profile />
+					</Route>
+					{/* <Route path="/stories">
+						<Stories />
+					</Route> */}
+				</Switch>
+			</Router>
+		</div>
 	);
 };
 

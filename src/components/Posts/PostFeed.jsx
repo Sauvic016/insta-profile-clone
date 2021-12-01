@@ -34,7 +34,8 @@ const PostFeed = ({ page, loading }) => {
 									: `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint at fugit temporibus ducimus similique sapiente! Corrupti quam asperiores libero. Neque!`
 							}
 							lSrc={el.urls.regular}
-							className="postImage"
+							className="gallery-item"
+							galleryImg="gallery-image"
 						/>
 					);
 				})}

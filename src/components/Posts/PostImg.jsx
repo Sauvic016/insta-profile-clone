@@ -5,7 +5,7 @@ import Modal from "../../components/Modal/Modal";
 
 import "./Posts.scss";
 
-const PostImg = ({ src, alt, loading, desc, lSrc, className }) => {
+const PostImg = ({ src, alt, loading, desc, lSrc, className, galleryImg }) => {
 	const [modalOpen, setModalOpen] = useState(false);
 	return (
 		<>
@@ -29,15 +29,29 @@ const PostImg = ({ src, alt, loading, desc, lSrc, className }) => {
 					isrc={src}
 				/>
 			)}
-			<img
-				src={src}
-				alt={alt}
+			<div
 				className={className}
 				onClick={() => {
 					setModalOpen(true);
 				}}
-				// style={{ width: "12.43rem", height: "15.43rem" }}
-			/>
+			>
+				<img src={src} alt={alt} className={galleryImg} />
+				<div className="gallery-item-info">
+					<ul>
+						<li className="gallery-item-likes">
+							<i className="fas fa-heart" aria-hidden="true"></i>{" "}
+							56
+						</li>
+						<li className="gallery-item-likes">
+							<i
+								className="fas fa-comment"
+								aria-hidden="true"
+							></i>{" "}
+							2
+						</li>
+					</ul>
+				</div>
+			</div>
 		</>
 	);
 };

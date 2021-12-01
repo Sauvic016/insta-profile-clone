@@ -9,7 +9,7 @@
 	display: flex;
 	justify-content: center;
 	padding: 5px 0;
-	z-index: 999999;
+	z-index: 100;
 
 	.nav-wrapper {
 		width: 70%;
@@ -67,7 +67,7 @@
 		}
 	}
 }
-@media screen and (max-width: 28.25rem) {
+@media screen and (max-width: 28.9rem) {
 	.navbar {
 		display: flex;
 		.nav-wrapper {

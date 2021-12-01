@@ -12,31 +12,6 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Favorite from "@material-ui/icons/Favorite";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 
-// const ModalImg = styled.img`
-//   width: 100%;
-//   height: 100%;
-//   border-radius: 10px 0 0 10px;
-//   background: #000;
-// `;
-
-// const ModalContent = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   line-height: 1.8;
-//   color: #141414;
-//   p {
-//     margin-bottom: 1rem;
-//   }
-//   button {
-//     padding: 10px 24px;
-//     background: #141414;
-//     color: #fff;
-//     border: none;
-//   }
-// `;
-
 const Modal = ({ setOpenModal, lsrc, desc, isrc }) => {
 	const detailOfImage = { isrc: isrc, lsrc: lsrc, desc: desc };
 	let saved = [];

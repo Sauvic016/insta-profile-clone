@@ -6,13 +6,13 @@ import PostWrapper from "./PostWrapper";
 const SavedFeed = () => {
 	const [url, setUrl] = useState([]);
 
-	const func = () => {
+	const getSavedImages = () => {
 		const saved = localStorage.getItem("filetoJson");
 		const values = JSON.parse(saved);
 		return values;
 	};
 	useEffect(() => {
-		setUrl(func());
+		setUrl(getSavedImages());
 	}, []);
 
 	return (
@@ -29,7 +29,8 @@ const SavedFeed = () => {
 									alt="img"
 									desc={el.desc}
 									lSrc={el.lsrc}
-									className="postImage"
+									className="gallery-item"
+									galleryImg="gallery-image"
 								/>
 							</>
 						);

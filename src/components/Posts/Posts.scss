@@ -14,15 +14,44 @@ hr {
 	flex-wrap: wrap;
 	margin: -1rem 10rem;
 
-	.postImage {
+	.gallery-item {
 		position: relative;
 		flex: 1 0 17.2rem;
 		margin: 1rem;
 		color: #fff;
 		cursor: pointer;
-		object-fit: cover;
 		width: 15rem;
 		height: 15rem;
+
+		&:hover {
+			.gallery-item-info {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: absolute;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.3);
+			}
+		}
+
+		.gallery-item-info {
+			display: none;
+			.gallery-item-likes {
+				display: inline-block;
+				margin-right: 2rem;
+				font-size: 1.2rem;
+				font-weight: 600;
+			}
+		}
+
+		.gallery-image {
+			flex: 1 0 17.2rem;
+			object-fit: cover;
+			width: 100%;
+			height: 100%;
+		}
 	}
 }
 .profile-tab {
