@@ -9,14 +9,6 @@ const Storezz = ({ setStories }) => {
 	const [storyIndex, setStoryIndex] = useState(0);
 	const videoRef = useRef();
 	const [storyPaused, setStoryPaused] = useState(false);
-	// const nextStory = () => {
-	// 	if (storyIndex === storyData.length - 1) {
-	// 		setStories(false);
-	// 	} else {
-	// 		setStoryIndex((value) => value + 1);
-	// 		console.log("Im executing");
-	// 	}
-	// };
 
 	// Transition to the nextstory
 	useEffect(() => {
@@ -30,25 +22,25 @@ const Storezz = ({ setStories }) => {
 		return () => clearInterval(interval);
 	}, [storyIndex, setStories]);
 
+	// Play and Paused
 	useEffect(() => {
 		if (!storyPaused) {
-			var isPlaying =
+			let storyPlaying =
 				videoRef.current.currentTime > 0 &&
 				!videoRef.current.paused &&
 				!videoRef.current.ended &&
 				videoRef.current.readyState >
 					videoRef.current.HAVE_CURRENT_DATA;
-			// videoRef.current.pause().then(() => {
-			if (!isPlaying) {
+			if (!storyPlaying) {
+				// console.log(videoRef.current.readyState);
 				videoRef.current.play();
 			}
-
-			// });
 		} else {
 			videoRef.current.pause();
 		}
 	}, [storyPaused]);
 
+	// Dynamically render the className
 	const getProgressBarClassName = (index) => {
 		if (index < storyIndex) {
 			return "progress-bar progress-bar-finished";
@@ -99,7 +91,6 @@ const Storezz = ({ setStories }) => {
 						ref={videoRef}
 						src={storyData[storyIndex].mediaUrl}
 						autoPlay
-						// onEnded={() => nextStory()}
 					></video>
 
 					{storyIndex !== 0 && (

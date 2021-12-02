@@ -29,7 +29,7 @@ const Modal = ({ setOpenModal, lsrc, desc, isrc }) => {
 	};
 
 	return (
-		<ModalWrapper setModal={setOpenModal}>
+		<ModalWrapper>
 			{/* <div className="infoandimg"> */}
 			<img src={lsrc} alt="" className="modalImage" />
 			<div className="description">
