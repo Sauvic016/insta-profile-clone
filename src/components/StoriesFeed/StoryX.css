@@ -1,0 +1,110 @@
+.StoriesBackground {
+	background: #1a1a1a;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 101;
+}
+a {
+	text-decoration: none;
+}
+.StoriesContainer {
+	position: fixed;
+	left: 30rem;
+	top: 1rem;
+	height: 727.68px;
+	width: 409.32px;
+	border-radius: 8px 8px 8px 8px;
+	margin: 0 auto;
+	box-shadow: 0 5px 16px rgba(83, 83, 83, 0.2);
+	display: flex;
+	flex-direction: column;
+	z-index: 102;
+}
+
+.StoriesContainer .title {
+	display: flex;
+	align-items: center;
+}
+.StoriesContainer .title img {
+	height: 32px;
+	width: 32px;
+	border-radius: 50%;
+}
+.StoriesContainer .title .details {
+	display: flex;
+	color: white;
+	flex-direction: column;
+	margin-left: 10px;
+	font-size: 13px;
+	font-weight: 600;
+}
+
+.progress-bars {
+	margin-top: 25px;
+	display: flex;
+}
+.progress-bar-container {
+	background: rgb(150, 150, 150);
+	height: 4px;
+	flex: 1;
+	margin: 0 5px;
+}
+.progress-bar-container:first-child {
+	margin-left: 2px;
+}
+.progress-bar-container:last-child {
+	margin-right: 2px;
+}
+
+.progress-bar {
+	background: white;
+	height: 4px;
+	width: 0%;
+}
+.progress-bar-paused {
+	animation-play-state: paused;
+}
+.progress-bar-active {
+	animation-name: ProgressBar;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+}
+
+.progress-bar-finished {
+	width: 100%;
+}
+
+@keyframes ProgressBar {
+	0% {
+		width: 0%;
+	}
+	100% {
+		width: 100%;
+	}
+}
+.StoriesContainer .video {
+	display: flex;
+	flex: 1;
+}
+.StoriesContainer .video video {
+	width: 100%;
+}
+.StoriesContainer .video svg {
+	cursor: pointer;
+	font-size: 45px;
+	color: white;
+	position: absolute;
+}
+
+.StoriesContainer .video .prev {
+	left: -50px;
+}
+.StoriesContainer .video .next {
+	right: -50px;
+}
