@@ -13,12 +13,10 @@ const PostFeed = ({ page, loading }) => {
         </div>
       )}
       <PostWrapper>
-        {page.map((el) => {
-          // console.log(el.urls.regular);
-          let keyid = Math.random() * 1000;
+        {page.map((el, index) => {
           return (
             <PostImg
-              key={el.id * 100 * keyid}
+              key={index}
               src={el.urls.thumb}
               alt="img"
               loading={loading}

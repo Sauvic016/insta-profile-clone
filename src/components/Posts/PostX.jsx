@@ -57,7 +57,7 @@ const Posts = () => {
     const event = window.addEventListener("scroll", () => {
       if (
         !loading &&
-        window.innerHeight + window.scrollY >= document.body.scrollHeight - 2 //gives the entire height of the document
+        window.innerHeight + window.scrollY >= document.body.scrollHeight - 1 //gives the entire height of the document
       ) {
         //window.innerHeight gives the height of the  visible part of the document
         //window.scrollY gives the current scroll position from the top in pixels
@@ -74,7 +74,6 @@ const Posts = () => {
     });
 
     return () => window.removeEventListener("scroll", event);
-    // eslint-disable-next-line
   }, [loading]);
 
   return (
@@ -87,7 +86,6 @@ const Posts = () => {
         })}
       </div>
       <br />
-      {/* {hasError && <p>Something went wrong.</p>} */}
       {tab === "POSTS" ? <PostFeed page={photos} loading={loading} /> : <SavedFeed />}
     </>
   );
